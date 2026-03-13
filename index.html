@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Apply for our 4-month Product Design course. Practice, mentorship, and portfolio.">
+  <meta name="theme-color" content="#0a0a1a">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta property="og:title" content="Product Design Course — Apply Now">
+  <meta property="og:description" content="4 months of practice, mentorship, and real portfolio projects.">
+  <meta property="og:type" content="website">
+  <title>Product Design Course — Apply</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="bg-effects">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+  </div>
+  <div class="bg-grid"></div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="main-container">
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle" id="lang-toggle">
+      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ru" onclick="switchLang('ru')">RU</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="header__badge">
+        <span class="header__badge-icon">🚀</span>
+        <span data-i18n="badge">Enrollment Open — Spring 2026</span>
+      </div>
+      <h1 class="header__title" data-i18n="title">Product Design Course</h1>
+      <p class="header__subtitle" data-i18n="subtitle">
+        4 months of intensive training, hands-on practice, and mentorship. 
+        Build your portfolio and start a career in product design.
+      </p>
+      <div class="header__features">
+        <div class="header__feature">
+          <div class="header__feature-icon">📅</div>
+          <span data-i18n="feat_duration">4 months</span>
+        </div>
+        <div class="header__feature">
+          <div class="header__feature-icon">👨‍🏫</div>
+          <span data-i18n="feat_mentorship">Mentorship</span>
+        </div>
+        <div class="header__feature">
+          <div class="header__feature-icon">💼</div>
+          <span data-i18n="feat_portfolio">Portfolio</span>
+        </div>
+        <div class="header__feature">
+          <div class="header__feature-icon">🎯</div>
+          <span data-i18n="feat_practice">Practice</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Progress -->
+    <div class="progress-container" id="progress-container">
+      <div class="progress-info">
+        <span class="progress-step" id="progress-step-text">Step 1 of 4</span>
+        <span class="progress-label" id="progress-label">Contact Info</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="progress-fill" style="width: 25%"></div>
+      </div>
+      <div class="steps-dots">
+        <div class="steps-dot active" data-step="1"></div>
+        <div class="steps-dot" data-step="2"></div>
+        <div class="steps-dot" data-step="3"></div>
+        <div class="steps-dot" data-step="4"></div>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="form-card" id="form-card">
+      <form id="application-form" name="design-course-application" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <!-- Netlify honeypot for spam protection -->
+        <div style="display:none"><input name="bot-field"></div>
+
+        <!-- Step 1: Contact Info -->
+        <div class="form-step active" id="step-1" data-step="1">
+          <h2 class="form-step__title">
+            <span class="form-step__title-icon">👋</span>
+            <span data-i18n="step1_title">Let's Get to Know You</span>
+          </h2>
+          <p class="form-step__description" data-i18n="step1_desc">Tell us a bit about yourself so we can get in touch.</p>
+
+          <div class="input-row">
+            <div class="form-group">
+              <label for="firstName"><span data-i18n="label_first_name">First Name</span> <span class="required">*</span></label>
+              <input type="text" class="form-input" id="firstName" name="firstName" data-i18n-placeholder="ph_first_name" placeholder="Alex" required autocomplete="given-name">
+              <div class="form-error" id="firstName-error" data-i18n="err_first_name">⚠ Please enter your first name</div>
+            </div>
+            <div class="form-group">
+              <label for="lastName"><span data-i18n="label_last_name">Last Name</span> <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lastName" name="lastName" data-i18n-placeholder="ph_last_name" placeholder="Johnson" required autocomplete="family-name">
+              <div class="form-error" id="lastName-error" data-i18n="err_last_name">⚠ Please enter your last name</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" class="form-input" id="email" name="email" placeholder="alex@example.com" required autocomplete="email" inputmode="email">
+            <div class="form-error" id="email-error" data-i18n="err_email">⚠ Please enter a valid email</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone"><span data-i18n="label_phone">Phone</span> <span class="required">*</span></label>
+            <input type="tel" class="form-input" id="phone" name="phone" data-i18n-placeholder="ph_phone" placeholder="+1 (555) 123-4567" required autocomplete="tel" inputmode="tel">
+            <div class="form-error" id="phone-error" data-i18n="err_phone">⚠ Please enter your phone number</div>
+          </div>
+
+          <div class="form-group">
+            <label for="city" data-i18n="label_city">City</label>
+            <input type="text" class="form-input" id="city" name="city" data-i18n-placeholder="ph_city" placeholder="New York" autocomplete="address-level2">
+          </div>
+
+          <div class="form-nav">
+            <div></div>
+            <button type="button" class="btn btn--primary" onclick="nextStep()">
+              <span class="btn-text" data-i18n="btn_next">Next</span>
+              <span class="btn__icon btn__icon--right">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Background & Experience -->
+        <div class="form-step" id="step-2" data-step="2">
+          <h2 class="form-step__title">
+            <span class="form-step__title-icon">🎓</span>
+            <span data-i18n="step2_title">Your Experience</span>
+          </h2>
+          <p class="form-step__description" data-i18n="step2_desc">Tell us about your current skills and background in design.</p>
+
+          <div class="form-group">
+            <label for="occupation"><span data-i18n="label_occupation">What do you do currently?</span> <span class="required">*</span></label>
+            <select class="form-select" id="occupation" name="occupation" required>
+              <option value="" disabled selected data-i18n="opt_select">Select an option</option>
+              <option value="student" data-i18n="opt_student">Student</option>
+              <option value="designer" data-i18n="opt_designer">Graphic / Web Designer</option>
+              <option value="developer" data-i18n="opt_developer">Developer</option>
+              <option value="marketer" data-i18n="opt_marketer">Marketer</option>
+              <option value="pm" data-i18n="opt_pm">Product Manager</option>
+              <option value="switching" data-i18n="opt_switching">Career Switcher</option>
+              <option value="freelancer" data-i18n="opt_freelancer">Freelancer</option>
+              <option value="other" data-i18n="opt_other">Other</option>
+            </select>
+            <div class="form-error" id="occupation-error" data-i18n="err_occupation">⚠ Please select an option</div>
+          </div>
+
+          <div class="form-group">
+            <label><span data-i18n="label_experience">Design experience level</span> <span class="required">*</span></label>
+            <div class="option-cards" id="experience-options">
+              <div class="option-card">
+                <input type="radio" name="experience" id="exp-none" value="Complete beginner" required>
+                <label for="exp-none" class="option-card__label">
+                  <span class="option-card__icon">🌱</span>
+                  <span data-i18n="exp_none">Complete beginner</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="experience" id="exp-beginner" value="Tried a little">
+                <label for="exp-beginner" class="option-card__label">
+                  <span class="option-card__icon">🌿</span>
+                  <span data-i18n="exp_beginner">Tried a little</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="experience" id="exp-intermediate" value="Have basic skills">
+                <label for="exp-intermediate" class="option-card__label">
+                  <span class="option-card__icon">🌳</span>
+                  <span data-i18n="exp_intermediate">Have basic skills</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="experience" id="exp-advanced" value="Already working in design">
+                <label for="exp-advanced" class="option-card__label">
+                  <span class="option-card__icon">🌟</span>
+                  <span data-i18n="exp_advanced">Already in design</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-error" id="experience-error" data-i18n="err_experience">⚠ Please select your level</div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="label_tools">Which tools do you know?</label>
+            <div class="option-cards" id="tools-options">
+              <div class="option-card">
+                <input type="checkbox" name="tools" id="tool-figma" value="Figma">
+                <label for="tool-figma" class="option-card__label">
+                  <span class="option-card__icon">🎨</span>
+                  <span>Figma</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="checkbox" name="tools" id="tool-sketch" value="Sketch">
+                <label for="tool-sketch" class="option-card__label">
+                  <span class="option-card__icon">💎</span>
+                  <span>Sketch</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="checkbox" name="tools" id="tool-ps" value="Photoshop">
+                <label for="tool-ps" class="option-card__label">
+                  <span class="option-card__icon">🖼️</span>
+                  <span>Photoshop</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="checkbox" name="tools" id="tool-none" value="None">
+                <label for="tool-none" class="option-card__label">
+                  <span class="option-card__icon">🤷</span>
+                  <span data-i18n="tool_none">None yet</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn--secondary" onclick="prevStep()">
+              <span class="btn__icon btn__icon--left">←</span>
+              <span class="btn-text" data-i18n="btn_back">Back</span>
+            </button>
+            <button type="button" class="btn btn--primary" onclick="nextStep()">
+              <span class="btn-text" data-i18n="btn_next">Next</span>
+              <span class="btn__icon btn__icon--right">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Motivation -->
+        <div class="form-step" id="step-3" data-step="3">
+          <h2 class="form-step__title">
+            <span class="form-step__title-icon">🔥</span>
+            <span data-i18n="step3_title">Motivation</span>
+          </h2>
+          <p class="form-step__description" data-i18n="step3_desc">Help us understand what you expect from the course.</p>
+
+          <div class="form-group">
+            <label><span data-i18n="label_goal">Why do you want to learn product design?</span> <span class="required">*</span></label>
+            <div class="option-cards" id="goal-options">
+              <div class="option-card">
+                <input type="radio" name="goal" id="goal-career" value="Career change" required>
+                <label for="goal-career" class="option-card__label">
+                  <span class="option-card__icon">🚀</span>
+                  <span data-i18n="goal_career">Career change</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="goal" id="goal-skills" value="Level up skills">
+                <label for="goal-skills" class="option-card__label">
+                  <span class="option-card__icon">📈</span>
+                  <span data-i18n="goal_skills">Level up skills</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="goal" id="goal-portfolio" value="Build a portfolio">
+                <label for="goal-portfolio" class="option-card__label">
+                  <span class="option-card__icon">💼</span>
+                  <span data-i18n="goal_portfolio">Build a portfolio</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="goal" id="goal-startup" value="For my startup">
+                <label for="goal-startup" class="option-card__label">
+                  <span class="option-card__icon">💡</span>
+                  <span data-i18n="goal_startup">For my startup</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-error" id="goal-error" data-i18n="err_goal">⚠ Please select a goal</div>
+          </div>
+
+          <div class="form-group">
+            <label for="motivation"><span data-i18n="label_motivation">Tell us more about your motivation</span> <span class="required">*</span></label>
+            <textarea class="form-textarea" id="motivation" name="motivation" 
+              data-i18n-placeholder="ph_motivation"
+              placeholder="Why do you want to become a product designer? What inspires you? What products do you love?" 
+              rows="4" required></textarea>
+            <div class="form-error" id="motivation-error" data-i18n="err_motivation">⚠ Please write at least a couple of sentences</div>
+          </div>
+
+          <div class="form-group">
+            <label><span data-i18n="label_hours">How many hours per week can you dedicate?</span> <span class="required">*</span></label>
+            <div class="slider-container">
+              <div class="slider-labels">
+                <span class="slider-label" data-i18n="hours_min">5 hours</span>
+                <span class="slider-label" data-i18n="hours_max">30+ hours</span>
+              </div>
+              <input type="range" class="form-slider" id="hours" name="hours" min="5" max="30" value="15" step="1">
+              <div class="slider-value" id="hours-value">15</div>
+              <div class="slider-value-label" data-i18n="hours_label">hours per week</div>
+            </div>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn--secondary" onclick="prevStep()">
+              <span class="btn__icon btn__icon--left">←</span>
+              <span class="btn-text" data-i18n="btn_back">Back</span>
+            </button>
+            <button type="button" class="btn btn--primary" onclick="nextStep()">
+              <span class="btn-text" data-i18n="btn_next">Next</span>
+              <span class="btn__icon btn__icon--right">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4: Final -->
+        <div class="form-step" id="step-4" data-step="4">
+          <h2 class="form-step__title">
+            <span class="form-step__title-icon">✨</span>
+            <span data-i18n="step4_title">Last Step</span>
+          </h2>
+          <p class="form-step__description" data-i18n="step4_desc">Just a few more questions and you're done!</p>
+
+          <div class="form-group">
+            <label for="instagram" data-i18n="label_instagram">Your Instagram</label>
+            <input type="text" class="form-input" id="instagram" name="instagram" placeholder="@username">
+          </div>
+
+          <div class="form-group">
+            <label for="portfolio" data-i18n="label_portfolio">Portfolio link (if any)</label>
+            <input type="url" class="form-input" id="portfolio" name="portfolio" placeholder="https://behance.net/yourwork" inputmode="url">
+          </div>
+
+          <div class="form-group">
+            <label><span data-i18n="label_source">How did you hear about us?</span> <span class="required">*</span></label>
+            <div class="option-cards" id="source-options">
+              <div class="option-card">
+                <input type="radio" name="source" id="source-instagram" value="Instagram" required>
+                <label for="source-instagram" class="option-card__label">
+                  <span class="option-card__icon">📱</span>
+                  <span>Instagram</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="source" id="source-friends" value="Friends">
+                <label for="source-friends" class="option-card__label">
+                  <span class="option-card__icon">👫</span>
+                  <span data-i18n="source_friends">Friends</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="source" id="source-youtube" value="YouTube">
+                <label for="source-youtube" class="option-card__label">
+                  <span class="option-card__icon">▶️</span>
+                  <span>YouTube</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+              <div class="option-card">
+                <input type="radio" name="source" id="source-other" value="Other">
+                <label for="source-other" class="option-card__label">
+                  <span class="option-card__icon">🔍</span>
+                  <span data-i18n="source_other">Other</span>
+                  <span class="option-card__check"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-error" id="source-error" data-i18n="err_source">⚠ Please select a source</div>
+          </div>
+
+          <div class="form-group">
+            <label for="comments" data-i18n="label_comments">Anything else you'd like to add?</label>
+            <textarea class="form-textarea" id="comments" name="comments" 
+              data-i18n-placeholder="ph_comments"
+              placeholder="Any questions or comments..." rows="3"></textarea>
+          </div>
+
+          <div class="form-nav" style="margin-top: 20px;">
+            <button type="button" class="btn btn--secondary" onclick="prevStep()">
+              <span class="btn__icon btn__icon--left">←</span>
+              <span class="btn-text" data-i18n="btn_back">Back</span>
+            </button>
+          </div>
+          <div style="margin-top: 14px;">
+            <button type="submit" class="btn btn--primary btn--submit" id="submit-btn">
+              <span class="btn-text" data-i18n="btn_submit">🎨 Submit Application</span>
+              <div class="spinner"></div>
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Success Screen -->
+      <div class="success-screen" id="success-screen">
+        <div class="success-icon">🎉</div>
+        <h2 data-i18n="success_title">Application Submitted!</h2>
+        <p data-i18n="success_desc">Thank you for your interest in our course! We'll reach out soon to discuss the details.</p>
+        
+        <div class="success-details">
+          <h3 data-i18n="success_next">What's next?</h3>
+          <ul>
+            <li><span>📧</span> <span data-i18n="success_item1">Check your email — we'll send a confirmation</span></li>
+            <li><span>📱</span> <span data-i18n="success_item2">Follow our Instagram for updates</span></li>
+            <li><span>📅</span> <span data-i18n="success_item3">Course starts — April 2026</span></li>
+            <li><span>⏰</span> <span data-i18n="success_item4">We'll reply within 48 hours</span></li>
+          </ul>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link" target="_blank">
+            <span>📱</span> Instagram
+          </a>
+          <a href="#" class="social-link" target="_blank">
+            <span>💬</span> Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p data-i18n="footer">© 2026 Product Design Course. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
