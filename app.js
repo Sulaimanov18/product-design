@@ -465,7 +465,7 @@ form.addEventListener('submit', async function (e) {
     formData.set('form-name', 'design-course-application');
     formData.set('language', currentLang);
     
-    // Add radio/checkbox values that might not be in FormData
+    // Explicitly set radio/checkbox values
     const experience = document.querySelector('input[name="experience"]:checked');
     if (experience) formData.set('experience', experience.value);
     const goal = document.querySelector('input[name="goal"]:checked');
@@ -478,26 +478,37 @@ form.addEventListener('submit', async function (e) {
     document.querySelectorAll('input[name="tools"]:checked').forEach(cb => tools.push(cb.value));
     formData.set('tools', tools.join(', '));
 
+    // Log what we're sending
+    const dataToSend = {};
+    formData.forEach((value, key) => { dataToSend[key] = value; });
+    console.log('📤 Sending form data:', dataToSend);
+
     // Check if we're on Netlify (production) or local
     const isNetlify = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
     
     if (isNetlify) {
       // Submit to Netlify Forms
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       });
+      
+      console.log('📬 Netlify response:', response.status, response.statusText);
+      
+      if (!response.ok) {
+        throw new Error(`Netlify returned ${response.status}: ${response.statusText}`);
+      }
     } else {
       // Demo mode for local development
-      const data = {};
-      formData.forEach((value, key) => { data[key] = value; });
-      console.log('📋 Form data (demo mode — deploy to Netlify for real submissions):', data);
+      console.log('📋 Form data (demo mode — deploy to Netlify for real submissions):', dataToSend);
       await new Promise(resolve => setTimeout(resolve, 1200));
     }
+    
+    console.log('✅ Form submitted successfully!');
     showSuccess();
   } catch (error) {
-    console.error('Submit error:', error);
+    console.error('❌ Submit error:', error);
     showToast(t('toast_error'));
     submitBtn.classList.remove('btn--loading');
     submitBtn.disabled = false;
